@@ -5,11 +5,16 @@ Configurations requises :
  - composer
  - node
  - yarn
+ - git
  
 Si vous n'avez pas ***yarn*** vous pouvez l'installer en suivant les instructions
 [ici.](https://yarnpkg.com/en/docs/install). C'est plus rapide que **npm**.
 
 A taper dans la console (terminal) :
+
+cloner le projet : 
+
+    git clone https://rzjosia@bitbucket.org/deust/daschow_web.git
 
 Installer les paquets composer 
 
