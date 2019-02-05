@@ -17,7 +17,7 @@ A taper dans la console (terminal) :
 
 Cloner le projet : 
 
-    git clone https://rzjosia@bitbucket.org/deust/daschow_web.git
+    git clone https://rzjosia@bitbucket.org/deust/daschow_web.git && cd daschow_web
 
 Installer les paquets composer 
 
