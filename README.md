@@ -41,7 +41,7 @@ Démarrer le serveur :
 
     php artisan serve
 
-Ouvrir l'addrese indiqué dans le terminal sur votre navigateur
+Ouvrir l'adresse indiquée dans le terminal sur votre navigateur
 
 Pour que chaque modification au sein des ressources soient prises en compte pendant le developement,
 il est conseillé de taper cette commande
