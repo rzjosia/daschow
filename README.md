@@ -27,7 +27,7 @@ Installer les paquets javascript :
 
     yarn install
     
-Modifier le fichier ***.env*** pour la base de donnée
+Modifier le fichier ***.env*** pour la base de données
 
     DB_DATABASE=nom_de_votre_bdd
     DB_USERNAME=nom_utilisateur_bd
