@@ -10,6 +10,8 @@ Configurations requises :
 Si vous n'avez pas ***yarn*** vous pouvez l'installer en suivant les instructions
 [ici.](https://yarnpkg.com/en/docs/install). C'est plus rapide que **npm**.
 
+Les instructions suivants sont à suivre pas à pas.
+
 A taper dans la console (terminal) :
 
 Cloner le projet : 
@@ -44,3 +46,5 @@ Pour que chaque modification au sein des ressources soient prises en compte pend
 il est conseillé de taper cette commande
 
     yarn run watch
+
+
