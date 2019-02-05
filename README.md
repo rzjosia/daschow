@@ -1,14 +1,15 @@
 #INSTRUCTIONS
 
 Configurations requises :
- - php >= 7
- - composer
- - node
- - yarn
- - git
+
+- php >= 7
+- composer
+- node
+- yarn
+- git
  
 Si vous n'avez pas ***yarn*** vous pouvez l'installer en suivant les instructions
-[ici.](https://yarnpkg.com/en/docs/install). C'est plus rapide que **npm**.
+[ici](https://yarnpkg.com/en/docs/install). C'est plus rapide que **npm**.
 
 Les instructions suivants sont à suivre pas à pas.
 
