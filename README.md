@@ -12,7 +12,7 @@ Si vous n'avez pas ***yarn*** vous pouvez l'installer en suivant les instruction
 
 A taper dans la console (terminal) :
 
-cloner le projet : 
+Cloner le projet : 
 
     git clone https://rzjosia@bitbucket.org/deust/daschow_web.git
 
