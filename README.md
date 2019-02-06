@@ -1,22 +1,25 @@
 #INSTRUCTIONS
 
 Configurations requises :
- - php >= 7
- - composer
- - node
- - yarn
- - git
+
+- php >= 7
+- composer
+- node
+- yarn
+- git
  
 Si vous n'avez pas ***yarn*** vous pouvez l'installer en suivant les instructions
-[ici.](https://yarnpkg.com/en/docs/install). C'est plus rapide que **npm**.
+[ici](https://yarnpkg.com/en/docs/install). C'est plus rapide que **npm**.
+
+Les instructions suivants sont à suivre pas à pas.
 
 A taper dans la console (terminal) :
 
-cloner le projet : 
+Cloner le projet : 
 
-    git clone https://rzjosia@bitbucket.org/deust/daschow_web.git
+    git clone https://bitbucket.org/deust/daschow_web.git && cd daschow_web
 
-Installer les paquets composer 
+Installer les paquets composer :
 
     composer install
     
@@ -24,7 +27,7 @@ Installer les paquets javascript :
 
     yarn install
     
-Modifier le fichier ***.env*** pour la base de donnée
+Modifier le fichier ***.env*** pour la base de données
 
     DB_DATABASE=nom_de_votre_bdd
     DB_USERNAME=nom_utilisateur_bd
@@ -38,9 +41,11 @@ Démarrer le serveur :
 
     php artisan serve
 
-Ouvrir l'addrese indiqué dans le terminal sur votre navigateur
+Ouvrir l'adresse indiquée dans le terminal sur votre navigateur
 
 Pour que chaque modification au sein des ressources soient prises en compte pendant le developement,
-il est conseillé de taper cette commande
+il est conseillé de taper cette commande :
 
     yarn run watch
+
+
