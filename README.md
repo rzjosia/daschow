@@ -17,9 +17,9 @@ A taper dans la console (terminal) :
 
 Cloner le projet : 
 
-    git clone https://rzjosia@bitbucket.org/deust/daschow_web.git && cd daschow_web
+    git clone https://bitbucket.org/deust/daschow_web.git && cd daschow_web
 
-Installer les paquets composer 
+Installer les paquets composer :
 
     composer install
     
@@ -44,7 +44,7 @@ Démarrer le serveur :
 Ouvrir l'adresse indiquée dans le terminal sur votre navigateur
 
 Pour que chaque modification au sein des ressources soient prises en compte pendant le developement,
-il est conseillé de taper cette commande
+il est conseillé de taper cette commande :
 
     yarn run watch
 
