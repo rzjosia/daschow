@@ -14,7 +14,7 @@ echo ""
 
 if [[ ! -f ".env" ]]; then
     echo "créationd du fichier env"
-    cp ./.env.example ./env
+    cp ./.env.example ./.env
 fi
 
 echo "compilation en mode prod"
