@@ -1,15 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Forms\PasswordForm;
 use App\Http\Forms\UserForm;
 use App\User;
 use Illuminate\Http\Request;
-use Kris\LaravelFormBuilder\FormBuilder;
+use Illuminate\Support\Facades\Auth;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
 
 class HomeController extends Controller
 {
     use FormBuilderTrait;
+
     /**
      * Create a new controller instance.
      *
@@ -31,50 +34,84 @@ class HomeController extends Controller
     }
 
     /**
-     * @param FormBuilder $formBuilder
-     * @param $id
+     * Formulaire de mofification du profil
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(FormBuilder $formBuilder, $id) {
-        if ($id != \Auth::user()->id) {
-            return redirect()->route('useredit', ['id' => \Auth::user()->id]);
-        }
-        $user = User::findOrFail($id);
-        $user->password = "";
-        $form = $formBuilder->create(UserForm::class, [
+    public function edit()
+    {
+        $user = User::findOrFail(\Auth::user()->id);
+
+        $form = $this->form(UserForm::class, [
             'model' => $user,
             'method' => 'POST',
             'url' => route("userupdate"),
         ]);
-        return view('auth.update', compact('form', 'user'));
+
+        $title = "Mon profil";
+
+        return view('edit.update', compact('form', 'user', 'title'));
     }
 
     /**
-     * @param FormBuilder $formBuilder
+     * Appliquer la modificiaton du profil
      * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(FormBuilder $formBuilder, Request $request) {
-        $user = User::where('id', \Auth::user()->id)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => \Hash::needsRehash($request->password) ?  \Hash::make($request->password) : $request->password
-        ]);
-        $user = User::where('email', $request->email)->first();
+    public function update(Request $request)
+    {
+        $form = $this->form(UserForm::class);
 
-        $form = $formBuilder->create(UserForm::class, [
-            'model' => $user,
-            'method' => 'POST',
-            'url' => route("userupdate")
-        ]);
-
+        // Redirection automatique si le formulaire n'est pas validé
         if (!$form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
 
-        return redirect()->route('useredit', ['id' => $user->id])
-            ->withUser($user)->withForm($form);
+        $form->redirectIfNotValid();
+
+        $user = User::findOrFail(Auth::user()->id);
+
+        // Modification des champs
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        $user->save(); // Modifier dans la table
+
+        return redirect()->route('useredit');
     }
 
+    public function passEdit() {
+        $user = User::findOrFail(\Auth::user()->id);
+
+        $form = $this->form(PasswordForm::class, [
+            'model' => [
+              "current_password" => \Auth::user()->getAuthPassword()
+            ],
+            'method' => 'POST',
+            'url' => route("passUpdate"),
+        ]);
+
+        $title = "Modification du mot de passe";
+
+        return view('edit.update', compact('form', 'user', 'title'));
+    }
+
+    public function passUpdate(Request $request) {
+        $form = $this->form(PasswordForm::class);
+        // Redirection automatique si le formulaire n'est pas validé
+        if (!$form->isValid()) {
+            return redirect()->back()->withErrors($form->getErrors())->withInput()->withTitle("Erreur");
+        }
+
+        $form->redirectIfNotValid();
+
+        $user = User::findOrFail(\Auth::user()->id);
+
+        // Modification des champs
+        $user->password = \Hash::make($form->getField("password")->getRawValue());
+
+        $user->save(); // Modifier dans la table
+
+        return redirect()->route('passEdit');
+    }
 
 }

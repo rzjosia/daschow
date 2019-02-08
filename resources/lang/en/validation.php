@@ -133,6 +133,8 @@ return [
         ],
     ],
 
+    'different_to' => 'The :attribute is wrong',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes

@@ -55,8 +55,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a href="{{ route('useredit', Auth::user()->id) }}" class="dropdown-item">{{ __
+                                    <a href="{{ route('useredit') }}" class="dropdown-item">{{ __
                                     ('Mon Profil')
+                                    }}</a>
+                                    <a href="{{ route('passEdit') }}" class="dropdown-item">{{ __
+                                    ('Modifier mon mot de passe')
                                     }}</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"

@@ -2,8 +2,10 @@
 
 namespace App\Http\Forms;
 
-use Kris\LaravelFormBuilder\Form;
+use App\Rules\DifferentTo;
+use App\User;
 use Kris\LaravelFormBuilder\Field;
+use Kris\LaravelFormBuilder\Form;
 
 class UserForm extends Form
 {
@@ -13,22 +15,14 @@ class UserForm extends Form
         // Add fields here...
         $this
             ->add('name', Field::TEXT, [
-                'rules' =>'min:4',
+                'rules' => 'required|min:4|max:191',
                 'label' => "Nom d'utilisateur",
                 'placeholder' => "Martin Dubois"
             ])
             ->add('email', Field::TEXT, [
-                    'rules' =>'email',
-                    'label' => "Adresse email",
-                    'placeholder' => "joe@domain.com"
-                ])
-            ->add('password', Field::PASSWORD, [
-                'rules' =>'min:6|confirmed',
-                'placeholder' => "Votre mot de passe"
-            ])
-            ->add('password_confirmation', Field::PASSWORD, [
-                'rules' =>'min:6',
-                'placeholder' => "Votre mot de passe"
+                'rules' => ['required', 'email', 'max:191', 'unique:users'],
+                'label' => "Adresse email",
+                'placeholder' => "joe@domain.com"
             ])
             ->add('submit', 'submit', [
                 'label' => 'Sauver',

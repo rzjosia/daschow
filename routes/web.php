@@ -18,5 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/edit/{id}', 'HomeController@edit')->name('useredit');
-Route::post('/update', 'HomeController@update')->name('userupdate');
+Route::get('/edit', 'HomeController@edit')->name('useredit');
+Route::post('/edit', 'HomeController@update')->name('userupdate');
+Route::get('/passedit', 'HomeController@passEdit')->name('passEdit');
+Route::post('/passedit', 'HomeController@passUpdate')->name('passUpdate');
