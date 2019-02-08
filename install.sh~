@@ -1,0 +1,15 @@
+#!/bin/sh
+
+composer install
+sudo chmod 755 -R storage/
+cp .env.example .env
+php artisan key:generate
+yarn install
+
+if [[ $# -gt 0 ]]; then
+    yarn run $1
+    else
+    yarn run prod
+fi
+
+echo "L'installation est fini. Veuillez modifier le fichier .env avec les parametres adequatent"
